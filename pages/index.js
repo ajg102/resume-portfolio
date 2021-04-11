@@ -8,10 +8,18 @@ import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
   const [search, setSearch] = useState("Learn about Alex");
+  const [inputHasFocused, setInputHasFocused] = useState(false);
 
   const googleSearchHandler = (e) => {
     e.preventDefault();
-    router.push(`/search?q=${search}`);
+    if (search.trim() === "") return;
+    router.push(`/search?q=${search}&f=all`);
+  };
+
+  const onFocusHandler = (e) => {
+    if (inputHasFocused) return;
+    setSearch("");
+    setInputHasFocused(true);
   };
 
   const feelingLuckyHandler = (e) => {
@@ -27,6 +35,7 @@ export default function Home() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
+          onFocus={onFocusHandler}
           className="flex flex-grow focus:outline-none"
         />
         <MicrophoneIcon className="h-5" />

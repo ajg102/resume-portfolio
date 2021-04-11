@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { XIcon, SearchIcon } from "@heroicons/react/solid";
@@ -9,7 +9,11 @@ import SearchHeaderOptions from "./SearchHeaderOptions";
 function SearchHeader() {
   const router = useRouter();
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(router.query.q);
+
+  useEffect(() => {
+    setSearch(router.query.q);
+  }, [router.query]);
 
   const goHomeHandler = () => {
     router.push("/");
@@ -18,7 +22,7 @@ function SearchHeader() {
   const searchHandler = (e) => {
     e.preventDefault();
     if (search.trim() === "") return;
-    router.push(`/search?q=${search}`);
+    router.push(`/search?q=${search}&f=${router.query.f}`);
   };
 
   return (
@@ -31,6 +35,7 @@ function SearchHeader() {
           height={30}
           className="cursor-pointer"
         />
+
         <form className="flex flex-grow border border-gray-200 rounded-full shadow-lg max-w-3xl items-center px-6 py-3 ml-10 mr-5">
           <input
             value={search}
