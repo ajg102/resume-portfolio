@@ -1,10 +1,15 @@
 import { ViewGridIcon } from "@heroicons/react/solid";
 import Avatar from "../Avatar";
+import Link from "next/link";
+
 function HomeHeader() {
   return (
     <header className="flex w-full p-5 justify-between text-sm text-gray-700">
       <div className="flex space-x-4 items-center">
-        <p className="navLink">About</p>
+        <Link href="/about">
+          <a className="navLink">About</a>
+        </Link>
+
         <p className="navLink">Store</p>
       </div>
       <div className="flex space-x-4 items-center">
