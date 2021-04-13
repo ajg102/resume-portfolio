@@ -28,7 +28,12 @@ export default function Home() {
 
   return (
     <form className="flex flex-col items-center my-auto flex-grow w-4/5">
-      <Image src="/glick-google.png" height={100} width={275} />
+      <Image
+        src="/glick-google.png"
+        height={100}
+        width={275}
+        alt="Glick logo"
+      />
       <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow-lg max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl">
         <SearchIcon className="h-5 mr-3 text-gray-500" />
         <input

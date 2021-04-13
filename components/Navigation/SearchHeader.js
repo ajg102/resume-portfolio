@@ -48,7 +48,10 @@ function SearchHeader() {
             className="h-7 text-gray-500 cursor-pointer transition duration-100 transform hover:scale-125 sm:mr-3"
           />
           <MicrophoneIcon className="mr-3 h-7 hidden sm:inline-flex border-l-2 pl-4 border-gray-300 cursor-pointer" />
-          <SearchIcon className="h-7 text-blue-500 hidden sm:inline-flex" />
+          <SearchIcon
+            onClick={searchHandler}
+            className="h-7 text-blue-500 hidden sm:inline-flex cursor-pointer"
+          />
           <button hidden type="submit" onClick={searchHandler}>
             Search
           </button>

@@ -1,8 +1,13 @@
 import React from "react";
 
-function SearchIcon({ className = "" }) {
+function SearchIcon({ className = "", ...restProps }) {
   return (
-    <svg className={className} focusable="false" viewBox="0 0 24 24">
+    <svg
+      className={className}
+      focusable="false"
+      viewBox="0 0 24 24"
+      {...restProps}
+    >
       <path fill="#34a853" d="M10 2v2a6 6 0 0 1 6 6h2a8 8 0 0 0-8-8"></path>
       <path fill="#ea4335" d="M10 4V2a8 8 0 0 0-8 8h2c0-3.3 2.7-6 6-6"></path>
       <path
