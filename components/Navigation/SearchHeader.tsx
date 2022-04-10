@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import Image from "next/image";
-import { XIcon, SearchIcon } from "@heroicons/react/solid";
-import MicrophoneIcon from "../CustomIcons/Microphone";
+import { useRouter } from "next/router";
+import { SyntheticEvent, useEffect, useState } from "react";
 import Avatar from "../Avatar";
+import MicrophoneIcon from "../CustomIcons/Microphone";
 import SearchHeaderOptions from "./SearchHeaderOptions";
 
 function SearchHeader() {
   const router = useRouter();
 
-  const [search, setSearch] = useState(router.query.q);
+  const [search, setSearch] = useState<string>(router.query.q as string);
 
   useEffect(() => {
-    setSearch(router.query.q);
+    setSearch(router.query.q as string);
   }, [router.query]);
 
   const goHomeHandler = () => {
     router.push("/");
   };
 
-  const searchHandler = (e) => {
+  const searchHandler = (e: SyntheticEvent) => {
     e.preventDefault();
     if (search.trim() === "") return;
     router.push(`/search?q=${search}&f=${router.query.f}`);

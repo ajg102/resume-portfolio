@@ -1,4 +1,6 @@
-function InstagramIcon({ className = "", fillColor = "#fff" }) {
+import { IconProps } from ".";
+
+function InstagramIcon({ className = "", fillColor = "#fff" }: IconProps) {
   return (
     <svg
       className={className}

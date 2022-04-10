@@ -1,6 +1,7 @@
 import React from "react";
+import { IconProps } from ".";
 
-function BooksIcon({ className = "" }) {
+function BooksIcon({ className = "" }: IconProps) {
   return (
     <svg className={className} focusable="false" viewBox="0 0 24 24">
       <path fill="#fbbc04" d="M6 20v-8H4v8c0 1.1.9 2 2 2h6v-2H6"></path>

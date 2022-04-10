@@ -1,11 +1,13 @@
-import { useMemo } from "react";
-import BasicLayout from "../components/Layout/BasicLayout";
 import Image from "next/image";
+import { ReactElement, SyntheticEvent, useMemo } from "react";
+import BasicLayout from "../components/Layout/BasicLayout";
 import { calculateAge } from "../lib/functions/calculateAge";
 
+const BIRTHDAY = "11/29/1993";
+
 function AboutPage() {
-  const howOldIAm = useMemo(() => calculateAge("11/29/1993"), []);
-  const seeMyWorkHandler = (e) => {
+  const howOldIAm = useMemo(() => calculateAge(BIRTHDAY), []);
+  const seeMyWorkHandler = (e: SyntheticEvent) => {
     e.preventDefault();
   };
   return (
@@ -87,6 +89,6 @@ function AboutPage() {
   );
 }
 
-AboutPage.layout = BasicLayout;
+AboutPage.layout = (page: ReactElement) => <BasicLayout>{page}</BasicLayout>;
 
 export default AboutPage;

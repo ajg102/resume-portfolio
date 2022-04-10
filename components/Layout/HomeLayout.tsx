@@ -1,8 +1,9 @@
 import Head from "next/head";
-import HomeHeader from "../Navigation/HomeHeader";
 import HomeFooter from "../Navigation/HomeFooter";
+import HomeHeader from "../Navigation/HomeHeader";
+import { LayoutProps } from "./BasicLayout";
 
-function BasicLayout({ children }) {
+function BasicLayout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col items-center justify-center  h-screen">
       <Head>

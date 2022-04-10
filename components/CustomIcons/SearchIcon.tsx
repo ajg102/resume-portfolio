@@ -1,6 +1,7 @@
 import React from "react";
+import { IconProps } from ".";
 
-function SearchIcon({ className = "", ...restProps }) {
+function SearchIcon({ className = "", ...restProps }: IconProps) {
   return (
     <svg
       className={className}

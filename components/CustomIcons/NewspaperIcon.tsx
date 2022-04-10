@@ -1,6 +1,7 @@
 import React from "react";
+import { IconProps } from ".";
 
-function NewspaperIcon({ className = "" }) {
+function NewspaperIcon({ className = "" }: IconProps) {
   return (
     <svg className={className} focusable="false" viewBox="0 0 24 24">
       <path

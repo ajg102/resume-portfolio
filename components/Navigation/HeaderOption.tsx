@@ -1,9 +1,20 @@
 import { useRouter } from "next/router";
+import { SyntheticEvent } from "react";
 
-function HeaderOption({ Icon, title = "", selected = false }) {
+type HeaderOptionProps = {
+  Icon(props: any): JSX.Element;
+  title?: string;
+  selected?: boolean;
+};
+
+function HeaderOption({
+  Icon,
+  title = "",
+  selected = false,
+}: HeaderOptionProps) {
   const router = useRouter();
 
-  const onHeaderOptionClickedHandler = (e) => {
+  const onHeaderOptionClickedHandler = (e: SyntheticEvent) => {
     if (selected || title === "More") return;
     router.push(`/search?q=${router.query.q}&f=${title.toLowerCase()}`);
   };

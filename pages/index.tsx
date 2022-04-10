@@ -1,28 +1,28 @@
-import { useState } from "react";
-import HomeLayout from "../components/Layout/HomeLayout";
-import Image from "next/image";
 import { SearchIcon } from "@heroicons/react/solid";
-import MicrophoneIcon from "../components/CustomIcons/Microphone";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import { ReactElement, SyntheticEvent, useState } from "react";
+import MicrophoneIcon from "../components/CustomIcons/Microphone";
+import HomeLayout from "../components/Layout/HomeLayout";
 
 export default function Home() {
   const router = useRouter();
   const [search, setSearch] = useState("Learn about Alex");
   const [inputHasFocused, setInputHasFocused] = useState(false);
 
-  const googleSearchHandler = (e) => {
+  const googleSearchHandler = (e: SyntheticEvent) => {
     e.preventDefault();
     if (search.trim() === "") return;
     router.push(`/search?q=${search}&f=all`);
   };
 
-  const onFocusHandler = (e) => {
+  const onFocusHandler = () => {
     if (inputHasFocused) return;
     setSearch("");
     setInputHasFocused(true);
   };
 
-  const feelingLuckyHandler = (e) => {
+  const feelingLuckyHandler = (e: SyntheticEvent) => {
     e.preventDefault();
   };
 
@@ -58,4 +58,4 @@ export default function Home() {
   );
 }
 
-Home.layout = HomeLayout;
+Home.layout = (page: ReactElement) => <HomeLayout>{page}</HomeLayout>;
