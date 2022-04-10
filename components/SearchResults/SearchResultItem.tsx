@@ -1,11 +1,12 @@
 import React from "react";
+import { SearchResultItemType } from ".";
 
 function SearchResultItem({
   title = "",
   snippet = "",
   link = "",
-  formattedUrl = ""
-}) {
+  formattedUrl = "",
+}: SearchResultItemType) {
   return (
     <div className="max-w-xl mb-8">
       <div className="group">
@@ -18,7 +19,7 @@ function SearchResultItem({
           </h2>
         </a>
       </div>
-      <p className="">{snippet}</p>
+      <p>{snippet}</p>
     </div>
   );
 }

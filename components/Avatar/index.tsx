@@ -1,4 +1,9 @@
-function Avatar({ src, className = "" }) {
+type AvatarProps = {
+  src: string;
+  className?: string;
+};
+
+function Avatar({ src, className = "" }: AvatarProps) {
   return (
     <img
       src={src}

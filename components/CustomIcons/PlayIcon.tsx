@@ -1,6 +1,7 @@
 import React from "react";
+import { IconProps } from ".";
 
-function PlayIcon({ className = "" }) {
+function PlayIcon({ className = "" }: IconProps) {
   return (
     <svg className={className} focusable="false" viewBox="0 0 24 24">
       <path fill="#4285f4" d="M10 16.5l6-4.5-6-4.5"></path>

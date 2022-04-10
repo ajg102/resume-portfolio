@@ -1,6 +1,7 @@
 import React from "react";
+import { IconProps } from ".";
 
-function MicrophoneIcon({ className = "" }) {
+function MicrophoneIcon({ className = "" }: IconProps) {
   return (
     <svg
       className={className}

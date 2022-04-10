@@ -1,7 +1,12 @@
-import BasicHeader from "../Navigation/BasicHeader";
 import Head from "next/head";
+import { ReactNode } from "react";
+import BasicHeader from "../Navigation/BasicHeader";
 
-function BasicLayout({ children }) {
+export type LayoutProps = {
+  children: ReactNode;
+};
+
+function BasicLayout({ children }: LayoutProps) {
   return (
     <div>
       <Head>

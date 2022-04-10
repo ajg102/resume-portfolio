@@ -1,11 +1,31 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 const PREFIX = "mywebapp-resume-portfolio";
+
+type ColorScheme = "light" | "dark";
+
+type DarkModeProviderProps = {
+  children: ReactNode;
+};
+
+interface DarkModeContext {
+  theme: ColorScheme;
+  isDarkMode: boolean;
+  toggleTheme(): void;
+}
 
 const getInitialTheme = () => {
   if (typeof window !== "undefined" && window.localStorage) {
     const storedPrefs = window.localStorage.getItem(PREFIX + "color-theme");
-    if (typeof storedPrefs === "string") {
+    if (storedPrefs === "light" || storedPrefs === "dark") {
       return storedPrefs;
     }
 
@@ -17,7 +37,7 @@ const getInitialTheme = () => {
   return "light";
 };
 
-const DarkModeContext = createContext();
+const DarkModeContext = createContext<DarkModeContext | null>(null);
 
 export const useDarkMode = () => {
   const context = useContext(DarkModeContext);
@@ -27,10 +47,10 @@ export const useDarkMode = () => {
   return context;
 };
 
-const DarkModeProvider = ({ initialTheme, children }) => {
-  const [theme, setTheme] = useState(getInitialTheme);
+const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
+  const [theme, setTheme] = useState<ColorScheme>(getInitialTheme);
 
-  const rawSetTheme = (rawTheme) => {
+  const rawSetTheme = (rawTheme: ColorScheme) => {
     const root = window.document.documentElement;
     const isDark = rawTheme === "dark";
 
@@ -40,22 +60,25 @@ const DarkModeProvider = ({ initialTheme, children }) => {
     localStorage.setItem(PREFIX + "color-theme", rawTheme);
   };
 
-  if (initialTheme) {
-    rawSetTheme(initialTheme);
-  }
-
   useEffect(() => {
     rawSetTheme(theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  }, [setTheme]);
+
+  const value = useMemo(
+    () => ({
+      theme,
+      isDarkMode: theme === "dark",
+      toggleTheme,
+    }),
+    [theme, setTheme]
+  );
 
   return (
-    <DarkModeContext.Provider
-      value={{ theme, setTheme, isDarkMode: theme === "dark", toggleTheme }}
-    >
+    <DarkModeContext.Provider value={value}>
       {children}
     </DarkModeContext.Provider>
   );

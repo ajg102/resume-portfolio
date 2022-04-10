@@ -1,7 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import SearchHeader from "../components/Navigation/SearchHeader";
 import SearchResults from "../components/SearchResults";
-import { useRouter } from "next/router";
 import DummyData from "../data/searchResults";
 
 function SearchPage() {
@@ -20,12 +20,3 @@ function SearchPage() {
 }
 
 export default SearchPage;
-
-// export async function getServerSideProps(context) {
-//   const searchQuery = context.query.q || "";
-//   return {
-//     props: {
-//       searchQuery
-//     }
-//   };
-// }

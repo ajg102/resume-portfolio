@@ -1,4 +1,6 @@
-function GitHubIcon({ className = "", fillColor = "#ffffff" }) {
+import { IconProps } from ".";
+
+function GitHubIcon({ className = "", fillColor = "#ffffff" }: IconProps) {
   return (
     <svg
       role="img"
