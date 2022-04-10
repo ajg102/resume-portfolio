@@ -56,7 +56,7 @@ function SearchHeader() {
             Search
           </button>
         </form>
-        <Avatar src="./profile.jpg" className="ml-auto " />
+        <Avatar src="./me.png" className="ml-auto " />
       </div>
 
       <SearchHeaderOptions />

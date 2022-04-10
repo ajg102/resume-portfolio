@@ -16,7 +16,7 @@ function HomeHeader() {
         <p className="navLink">Gmail</p>
         <p className="navLink">Images</p>
         <ViewGridIcon className="h-10 w-10 p-2 rounded-full hover:bg-gray-200 cursor-pointer" />
-        <Avatar src={"./profile.jpg"} />
+        <Avatar src={"./me.png"} />
       </div>
     </header>
   );

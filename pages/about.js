@@ -37,9 +37,9 @@ function AboutPage() {
         </div>
         <div className="col-span-1 flex flex-col items-center my-8 md:my-4">
           <Image
-            src="/profile.jpg"
+            src="/me.png"
             width={400}
-            height={300}
+            height={400}
             alt="Picture of Alex"
             className="rounded-lg"
           />
