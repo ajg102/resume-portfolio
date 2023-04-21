@@ -4,7 +4,7 @@ import moves from "../data/pokemonMoves.json";
 import { useDebounce } from "react-use";
 
 const PokemonMoves = () => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string>("");
   const mons = useMemo(() => moves.map((item) => item.name).sort(), []);
 
   const moveList = useMemo(() => {
@@ -21,6 +21,7 @@ const PokemonMoves = () => {
         onChange={(e) => setSelected(e.target.value)}
         className="w-4/5 border rounded capitalize px-2 py-1"
       >
+        <option className="capitalize" label={"Pick Something"} value={""} />
         {mons.map((mon) => (
           <option className="capitalize" key={mon} label={mon} value={mon} />
         ))}
